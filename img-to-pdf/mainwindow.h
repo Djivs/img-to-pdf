@@ -27,8 +27,6 @@ private slots:
 
     void on_startButton_clicked();
 
-    void on_setDefDirButton_clicked();
-
 private:
     Ui::MainWindow *ui;
     QString str;

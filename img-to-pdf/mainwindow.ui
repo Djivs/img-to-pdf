@@ -17,9 +17,9 @@
    <widget class="QComboBox" name="subjBox">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>10</y>
-      <width>181</width>
+      <width>171</width>
       <height>25</height>
      </rect>
     </property>
@@ -72,7 +72,7 @@
    <widget class="QDateEdit" name="dateEdit">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>230</x>
       <y>10</y>
       <width>110</width>
       <height>26</height>
@@ -82,10 +82,10 @@
    <widget class="QPushButton" name="startButton">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>100</y>
-      <width>89</width>
-      <height>25</height>
+      <x>160</x>
+      <y>50</y>
+      <width>221</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="text">
@@ -97,25 +97,32 @@
      <rect>
       <x>190</x>
       <y>10</y>
-      <width>89</width>
+      <width>31</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Directory</string>
+     <string>Dir</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="setDefDirButton">
+   <widget class="QTextEdit" name="nameText">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>413</x>
       <y>10</y>
-      <width>121</width>
-      <height>25</height>
+      <width>131</width>
+      <height>31</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Set default dir</string>
+   </widget>
+   <widget class="QTextEdit" name="classText">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>10</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
     </property>
    </widget>
   </widget>
