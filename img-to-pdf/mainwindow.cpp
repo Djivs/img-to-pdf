@@ -22,13 +22,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_dirButton_clicked()
 {
-    str = QFileDialog::getExistingDirectory(0, "Directory Dialog", "/home/dmitriy");
-    qDebug() << str;
+    QString str1 = QFileDialog::getExistingDirectory(0, "Directory Dialog", "/home/dmitriy");
+    if(str1 != "")
+        str = str1;
 }
 
 void MainWindow::on_startButton_clicked()
 {
-    QString filename = "11И_Трифонов_"+ui->subjBox->currentText()+ui->dateEdit->date().toString("dd.MM.yyyy")+".pdf";
+    QString filename = "11И_Трифонов_"+ui->subjBox->currentText()+'_'+ui->dateEdit->date().toString("dd.MM.yyyy")+".pdf";
     QPdfWriter pdfWriter(str +'/' + filename);
     pdfWriter.setPageSize(QPageSize(QPageSize::A4));
     QPainter painter(&pdfWriter);
@@ -51,10 +52,11 @@ void MainWindow::on_startButton_clicked()
 
 void MainWindow::on_setDefDirButton_clicked()
 {
-    str = QFileDialog::getExistingDirectory(0, "Directory Dialog", "/home/dmitriy");
+    QString str1 = QFileDialog::getExistingDirectory(0, "Directory Dialog", "/home/dmitriy");
     QFile f("defaultDir.txt");
-    if(f.open(QIODevice::ReadWrite | QIODevice::Truncate))
+    if(str1 != "" && f.open(QIODevice::ReadWrite | QIODevice::Truncate))
     {
+        str = str1;
         QTextStream out(&f);
         out << str;
     }
