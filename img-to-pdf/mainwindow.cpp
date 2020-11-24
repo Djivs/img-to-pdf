@@ -46,6 +46,7 @@ void MainWindow::on_startButton_clicked()
             }
         }
     }
+    ui->statusbar->showMessage("Finished");
 }
 
 void MainWindow::on_setDefDirButton_clicked()
