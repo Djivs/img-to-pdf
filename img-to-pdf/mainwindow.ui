@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="subjBox">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -79,7 +79,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="startButton">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -92,7 +92,7 @@
      <string>Start</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="dirButton">
     <property name="geometry">
      <rect>
       <x>210</x>

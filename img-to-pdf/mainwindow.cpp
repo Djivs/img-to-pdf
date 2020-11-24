@@ -14,15 +14,15 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_dirButton_clicked()
 {
     str = QFileDialog::getExistingDirectory(0, "Directory Dialog", "/home/dmitriy");
     qDebug() << str;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_startButton_clicked()
 {
-    QString filename = "11И_Трифонов_"+ui->comboBox->currentText()+ui->dateEdit->date().toString("dd.MM.yyyy")+".pdf";
+    QString filename = "11И_Трифонов_"+ui->subjBox->currentText()+ui->dateEdit->date().toString("dd.MM.yyyy")+".pdf";
     QPdfWriter pdfWriter(str +'/' + filename);
     pdfWriter.setPageSize(QPageSize(QPageSize::A4));
     QPainter painter(&pdfWriter);
