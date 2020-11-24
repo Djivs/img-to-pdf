@@ -7,6 +7,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->dateEdit->setDate(QDate::currentDate());
+    QFile f("defaultDir.txt");
+    if(f.open(QIODevice::ReadOnly))
+    {
+        str = f.readAll();
+    }
 }
 
 MainWindow::~MainWindow()
@@ -41,6 +46,15 @@ void MainWindow::on_startButton_clicked()
             }
         }
     }
+}
 
-
+void MainWindow::on_setDefDirButton_clicked()
+{
+    str = QFileDialog::getExistingDirectory(0, "Directory Dialog", "/home/dmitriy");
+    QFile f("defaultDir.txt");
+    if(f.open(QIODevice::ReadWrite | QIODevice::Truncate))
+    {
+        QTextStream out(&f);
+        out << str;
+    }
 }
