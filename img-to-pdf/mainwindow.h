@@ -4,6 +4,11 @@
 #include <QMainWindow>
 #include <QDir>
 #include <QFileDialog>
+#include <QPdfWriter>
+#include <QTextDocument>
+#include <QDirIterator>
+#include <QDebug>
+#include <QPainter>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,9 +25,12 @@ public:
 private slots:
     void on_pushButton_2_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QDir imgDir;
+    QString str;
+    QString imgFormats = "jpg png jpeg";
 
 };
 #endif // MAINWINDOW_H
