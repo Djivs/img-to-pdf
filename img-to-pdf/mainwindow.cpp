@@ -10,12 +10,15 @@ MainWindow::MainWindow(QWidget *parent)
     QFile f("dir.txt");
     if(f.open(QIODevice::ReadOnly))
         str = f.readAll();
-    QFile f1("class.txt");
-    if(f1.open(QIODevice::ReadOnly))
-        ui->classText->setText(f1.readAll());
-    QFile f2("name.txt");
-    if(f2.open(QIODevice::ReadOnly))
-        ui->nameText->setText(f2.readAll());
+    f.close();
+    f.setFileName("class.txt");
+    if(f.open(QIODevice::ReadOnly))
+        ui->classText->setText(f.readAll());
+    f.close();
+    f.setFileName("name.txt");
+    if(f.open(QIODevice::ReadOnly))
+        ui->nameText->setText(f.readAll());
+    f.close();
 }
 
 MainWindow::~MainWindow()
@@ -27,7 +30,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_dirButton_clicked()
 {
     QString str1 = QFileDialog::getExistingDirectory(0, "Directory Dialog", "/home/dmitriy");
-    qDebug() << str1;
     QFile f("dir.txt");
     if(str1 != "" && f.open(QIODevice::WriteOnly | QIODevice::Truncate))
     {
@@ -35,24 +37,26 @@ void MainWindow::on_dirButton_clicked()
         QTextStream out(&f);
         out << str;
     }
+    f.close();
 }
 
 void MainWindow::on_startButton_clicked()
 {
-    QFile f2("class.txt");
-    if(f2.open(QIODevice::ReadWrite | QIODevice::Truncate))
+    QFile f("class.txt");
+    if(f.open(QIODevice::ReadWrite | QIODevice::Truncate))
     {
-        QTextStream out(&f2);
+        QTextStream out(&f);
         out << ui->classText->toPlainText();
     }
-    QFile f1("name.txt");
-    if(f1.open(QIODevice::ReadWrite | QIODevice::Truncate))
+    f.close();
+    f.setFileName("name.txt");
+    if(f.open(QIODevice::ReadWrite | QIODevice::Truncate))
     {
-        QTextStream out(&f1);
+        QTextStream out(&f);
         out << ui->nameText->toPlainText();
     }
+    f.close();
     QString filename = ui->classText->toPlainText()+"_"+ui->nameText->toPlainText()+"_"+ui->subjBox->currentText()+'_'+ui->dateEdit->date().toString("dd.MM.yyyy")+".pdf";
-    qDebug() << filename << str;
     QPdfWriter pdfWriter(str +'/' + filename);
     pdfWriter.setPageSize(QPageSize(QPageSize::A4));
     QPainter painter(&pdfWriter);
@@ -71,5 +75,6 @@ void MainWindow::on_startButton_clicked()
             }
         }
     }
+    f.close();
     ui->statusbar->showMessage("Finished");
 }
