@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QDir>
 #include <QFileDialog>
 #include <QPdfWriter>
 #include <QTextDocument>
