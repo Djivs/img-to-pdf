@@ -9,6 +9,7 @@
 #include <QDirIterator>
 #include <QDebug>
 #include <QPainter>
+#include <QDesktopServices>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,6 +27,8 @@ private slots:
     void on_dirButton_clicked();
 
     void on_startButton_clicked();
+
+    void on_tutorialButton_clicked();
 
 private:
     Ui::MainWindow *ui;

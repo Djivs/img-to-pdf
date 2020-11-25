@@ -78,3 +78,8 @@ void MainWindow::on_startButton_clicked()
     f.close();
     ui->statusbar->showMessage("Finished");
 }
+
+void MainWindow::on_tutorialButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://github.com/Djivs/img-to-pdf#how-to-use-it"));
+}
