@@ -7,15 +7,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->dateEdit->setDate(QDate::currentDate());
-    QFile f("dir.txt");
+    QFile f("txt/dir.txt");
     if(f.open(QIODevice::ReadOnly))
         str = f.readAll();
     f.close();
-    f.setFileName("class.txt");
+    f.setFileName("txt/class.txt");
     if(f.open(QIODevice::ReadOnly))
         ui->classText->setText(f.readAll());
     f.close();
-    f.setFileName("name.txt");
+    f.setFileName("txt/name.txt");
     if(f.open(QIODevice::ReadOnly))
         ui->nameText->setText(f.readAll());
     f.close();
@@ -30,7 +30,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_dirButton_clicked()
 {
     QString str1 = QFileDialog::getExistingDirectory(0, "Directory Dialog", "/home/dmitriy");
-    QFile f("dir.txt");
+    QFile f("txt/dir.txt");
     if(str1 != "" && f.open(QIODevice::WriteOnly | QIODevice::Truncate))
     {
         str = str1;
@@ -42,14 +42,14 @@ void MainWindow::on_dirButton_clicked()
 
 void MainWindow::on_startButton_clicked()
 {
-    QFile f("class.txt");
+    QFile f("txt/class.txt");
     if(f.open(QIODevice::ReadWrite | QIODevice::Truncate))
     {
         QTextStream out(&f);
         out << ui->classText->toPlainText();
     }
     f.close();
-    f.setFileName("name.txt");
+    f.setFileName("txt/name.txt");
     if(f.open(QIODevice::ReadWrite | QIODevice::Truncate))
     {
         QTextStream out(&f);
