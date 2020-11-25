@@ -37,7 +37,7 @@ Firstly developed for distance learning homework files creating
 
 ### How to use it
 
-##### Note: Every field is auto-savig, so you don't have to enter data miltiple times
+##### Note: Every field is auto-savig, so you don't have to enter data multiple times
 
 - Put all your images to one folder
 
