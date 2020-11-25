@@ -1,5 +1,7 @@
 # img-to-pdf
 
+![screen](/home/dmitriy/Prog/C++/Qt/img-to-pdf/img/screenshot.png)
+
 Simple and useful tool for converting multiple images in 1 pdf
 
 Firstly developed for distance learning homework files creating
