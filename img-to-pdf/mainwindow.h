@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QPdfWriter>
-#include <QTextDocument>
 #include <QDirIterator>
 #include <QDebug>
 #include <QPainter>
