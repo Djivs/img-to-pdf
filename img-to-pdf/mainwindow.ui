@@ -20,7 +20,7 @@
       <property name="font">
        <font>
         <family>Droid Sans Fallback</family>
-        <pointsize>32</pointsize>
+        <pointsize>33</pointsize>
         <weight>75</weight>
         <italic>false</italic>
         <bold>true</bold>
