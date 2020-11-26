@@ -83,7 +83,7 @@ void MainWindow::on_startButton_clicked()
         }
     }
     f.close();
-    ui->statusbar->showMessage("Finished");
+    ui->statusbar->showMessage("Finished", 5000);
 }
 
 void MainWindow::on_tutorialButton_clicked()
