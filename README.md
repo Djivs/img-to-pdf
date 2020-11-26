@@ -19,17 +19,12 @@ Firstly developed for distance learning homework files creating
 
    `sudo apt-get install -y libxcb-xinerama0`
 
-2. Go to [Releases](https://github.com/Djivs/img-to-pdf/releases) page and download Linux installer
+2. Go to [Releases](https://github.com/Djivs/img-to-pdf/releases) page and download Linux archive
 
-3. Go to folder with your installer and make it executable:
-
-   `chmod +x Linux-intsller.run`
-
-4. Follow installer instructions and install programm.
-5. Go to folder that you pick for programm installation
-6. Go to img-to-pdf folder
-7. Make img-to-pdf.sh executable(see step 3)
-8. Run img-to-pdf.sh
+3. Go to folder with your archive and extract it
+4. Go to extracted folder
+5. Make img-to-pdf.sh executable
+6. Run img-to-pdf.sh
 
 ##### Windows:
 
