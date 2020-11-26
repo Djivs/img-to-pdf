@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QPainter>
 #include <QDesktopServices>
+#include <QImageReader>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,7 +32,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QString str;
-    QString imgFormats = "jpg png jpeg";
 
 };
 #endif // MAINWINDOW_H

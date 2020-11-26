@@ -42,6 +42,7 @@ void MainWindow::on_dirButton_clicked()
 
 void MainWindow::on_startButton_clicked()
 {
+    qDebug() << str;
     QFile f("txt/class.txt");
     if(f.open(QIODevice::ReadWrite | QIODevice::Truncate))
     {
@@ -56,31 +57,29 @@ void MainWindow::on_startButton_clicked()
         out << ui->nameText->toPlainText();
     }
     f.close();
-
     QString filename = ui->classText->toPlainText()+"_"+ui->nameText->toPlainText()+"_"+ui->subjBox->currentText()+'_'+ui->dateEdit->date().toString("dd.MM.yyyy")+".pdf";
     QPdfWriter pdfWriter(str +'/' + filename);
     pdfWriter.setPageSize(QPageSize(QPageSize::A4));
     QPainter painter(&pdfWriter);
     QDirIterator it(str, QDir::NoFilter);
+    bool begin = 1;
     while (it.hasNext())
     {
         QFile f(it.next());
-        if(f.open(QIODevice::ReadOnly))
+        if(f.open(QIODevice::ReadOnly) && QImageReader::imageFormat(f.fileName()) != "")
         {
-            if(imgFormats.indexOf(f.fileName().mid(f.fileName().size() - 3, 3)) != -1
-            || imgFormats.indexOf(f.fileName().mid(f.fileName().size() - 4, 4)) != -1)
+            if(!begin)
+                pdfWriter.newPage();
+            else
+                begin = 0;
+            QImage i(f.fileName());
+            if(i.height() < i.width())
             {
-                QImage i(f.fileName());
-                if(i.height() < i.width())
-                {
-                    QTransform t;
-                    t.rotate(180);
-                    i = i.transformed(t);
-                }
-                painter.drawImage(QRect(0,0,pdfWriter.logicalDpiX()*8,pdfWriter.logicalDpiY()*11.5), i);
-                if(it.hasNext())
-                    pdfWriter.newPage();
+                QTransform t;
+                t.rotate(90);
+                i = i.transformed(t);
             }
+            painter.drawImage(QRect(0,0,pdfWriter.logicalDpiX()*8,pdfWriter.logicalDpiY()*11.5), i);
         }
     }
     f.close();
