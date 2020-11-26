@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>631</width>
-    <height>458</height>
+    <width>627</width>
+    <height>459</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Image to PDF</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../img/logo.png</normaloff>../img/logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -320,7 +324,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>631</width>
+     <width>627</width>
      <height>22</height>
     </rect>
    </property>
