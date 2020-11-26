@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->dateEdit->setDate(QDate::currentDate());
     QFile f("txt/dir.txt");
     if(f.open(QIODevice::ReadOnly))
-        str = f.readAll();
+        dir = f.readAll();
     f.close();
     f.setFileName("txt/class.txt");
     if(f.open(QIODevice::ReadOnly))
@@ -19,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent)
     if(f.open(QIODevice::ReadOnly))
         ui->nameText->setText(f.readAll());
     f.close();
+    ui->flipImageButton->toggle();
+
+    connect(ui->tutorialButton, &QPushButton::clicked, [] () {return QDesktopServices::openUrl(QUrl("https://github.com/Djivs/img-to-pdf#how-to-use-it"));});
 }
 
 MainWindow::~MainWindow()
@@ -33,16 +36,15 @@ void MainWindow::on_dirButton_clicked()
     QFile f("txt/dir.txt");
     if(str1 != "" && f.open(QIODevice::WriteOnly | QIODevice::Truncate))
     {
-        str = str1;
+        dir = str1;
         QTextStream out(&f);
-        out << str;
+        out << dir;
     }
     f.close();
 }
 
 void MainWindow::on_startButton_clicked()
 {
-    qDebug() << str;
     QFile f("txt/class.txt");
     if(f.open(QIODevice::ReadWrite | QIODevice::Truncate))
     {
@@ -58,10 +60,10 @@ void MainWindow::on_startButton_clicked()
     }
     f.close();
     QString filename = ui->classText->toPlainText()+"_"+ui->nameText->toPlainText()+"_"+ui->subjBox->currentText()+'_'+ui->dateEdit->date().toString("dd.MM.yyyy")+".pdf";
-    QPdfWriter pdfWriter(str +'/' + filename);
+    QPdfWriter pdfWriter(dir +'/' + filename);
     pdfWriter.setPageSize(QPageSize(QPageSize::A4));
     QPainter painter(&pdfWriter);
-    QDirIterator it(str, QDir::NoFilter);
+    QDirIterator it(dir, QDir::NoFilter);
     bool begin = 1;
     while (it.hasNext())
     {
@@ -88,5 +90,5 @@ void MainWindow::on_startButton_clicked()
 
 void MainWindow::on_tutorialButton_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://github.com/Djivs/img-to-pdf#how-to-use-it"));
+    //QDesktopServices::openUrl(QUrl("https://github.com/Djivs/img-to-pdf#how-to-use-it"));
 }

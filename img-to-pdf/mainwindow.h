@@ -31,7 +31,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QString str;
+    QString dir;
+    bool flip = 1;
 
 };
 #endif // MAINWINDOW_H
