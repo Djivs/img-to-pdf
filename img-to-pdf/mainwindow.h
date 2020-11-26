@@ -27,8 +27,6 @@ private slots:
 
     void on_startButton_clicked();
 
-    void on_tutorialButton_clicked();
-
 private:
     Ui::MainWindow *ui;
     QString dir;
